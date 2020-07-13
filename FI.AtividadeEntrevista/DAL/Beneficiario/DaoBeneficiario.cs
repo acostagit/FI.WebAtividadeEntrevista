@@ -73,8 +73,9 @@ namespace FI.AtividadeEntrevista.DAL
         public List<DML.Beneficiario> Listar()
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
+            var ID = 0;
 
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Id", 0));
+            parametros.Add(new System.Data.SqlClient.SqlParameter("ID", ID));
 
             DataSet ds = base.Consultar("FI_SP_Cons_Beneficiario", parametros);
             List<DML.Beneficiario> cli = Converter(ds);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,23 +22,34 @@ namespace FI.AtividadeEntrevista.DAL
         public long Incluir(DML.Cliente cliente)
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
-            
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Nome", cliente.Nome));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Sobrenome", cliente.Sobrenome));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Nacionalidade", cliente.Nacionalidade));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("CEP", cliente.CEP));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Estado", cliente.Estado));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Cidade", cliente.Cidade));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Logradouro", cliente.Logradouro));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Email", cliente.Email));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("Telefone", cliente.Telefone));
-            parametros.Add(new System.Data.SqlClient.SqlParameter("CPF", cliente.CPF));
 
-            DataSet ds = base.Consultar("FI_SP_IncClienteV2", parametros);
-            long ret = 0;
-            if (ds.Tables[0].Rows.Count > 0)
-                long.TryParse(ds.Tables[0].Rows[0][0].ToString(), out ret);
-            return ret;
+            using (SqlConnection connection = new SqlConnection())
+            {
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Nome", cliente.Nome));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Sobrenome", cliente.Sobrenome));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Nacionalidade", cliente.Nacionalidade));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("CEP", cliente.CEP));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Estado", cliente.Estado));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Cidade", cliente.Cidade));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Logradouro", cliente.Logradouro));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Email", cliente.Email));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("Telefone", cliente.Telefone));
+                parametros.Add(new System.Data.SqlClient.SqlParameter("CPF", cliente.CPF));
+
+                DataSet ds = base.Consultar("FI_SP_IncClienteV2", parametros);
+                long ret = 0;
+                if (ds.Tables[0].Rows.Count > 0)
+                    long.TryParse(ds.Tables[0].Rows[0][0].ToString(), out ret);
+
+                foreach (Beneficiario beneficiario in cliente.Beneficiarios)
+                {
+                    DaoBeneficiario beneficiarioDAO = new DaoBeneficiario();
+                    beneficiarioDAO.Incluir(beneficiario);
+                }
+                //transacao.Commit();
+
+                return ret;
+            }
         }
 
         /// <summary>

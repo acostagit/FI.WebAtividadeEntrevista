@@ -5,6 +5,41 @@
 @section scripts{
     <script>
         var urlPost = '@Url.Action("Incluir", "Cliente", new { area = "" })';
+
+
+        var items = new Object();
+        items.beneficiarios = new Array();
+
+        var beneficiarios;
+
+        $("#cpf").mask("999.999.999-99");
+
+        $('#btn-incluir').on('click', function () {
+            beneficiarios = adicionar();
+
+        });
+
+        function adicionar() {
+            var var_cpf =  $("#cpf-beneficiario").val();
+            var var_nome = $("#nome-beneficiario").val();
+
+            items.beneficiarios.push(new Object({ cpf: var_cpf, nome: var_nome }));
+
+            $("#resultado").empty();
+            $(items.beneficiarios).each(function () {
+
+                $("#resultado").append("CPF = " + this.cpf + " | Nome = " + this.nome + "<br>").hide();
+
+                $('#formCadastro').append('<input type="text" class="form-control" name="cpf[]">');
+
+            });
+
+            $("#cpf-beneficiario").val('');
+            $("#nome-beneficiario").val('');
+
+            return JSON.stringify(items.beneficiarios);
+
+        }
     </script>
     @Scripts.Render("~/bundles/clientes")
 }

@@ -1,6 +1,41 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
+
     $('#formCadastro').submit(function (e) {
+
+        var items = new Object();
+        items.beneficiarios = new Array();
+
+        var beneficiarios;
+
+        $('#btn-incluir').on('click', function () {
+            beneficiarios = adicionar();
+
+        });
+       
+
+        function adicionar() {
+            var var_cpf = $("#cpf-beneficiario").val();
+            var var_nome = $("#nome-beneficiario").val();
+
+            items.beneficiarios.push(new Object({ cpf: var_cpf, nome: var_nome }));
+
+            $("#resultado").empty();
+            $(items.beneficiarios).each(function () {
+
+                $("#resultado").append("CPF = " + this.cpf + " | Nome = " + this.nome + "<br>").hide();
+
+                $('#formCadastro').append('<input type="text" class="form-control" name="cpf[]">');
+
+            });
+
+            $("#cpf-beneficiario").val('');
+            $("#nome-beneficiario").val('');
+
+            beneficiarios = items.beneficiarios;
+
+            return JSON.stringify(items.beneficiarios);
+        }
+
         e.preventDefault();
         $.ajax({
             url: urlPost,
@@ -15,7 +50,8 @@ $(document).ready(function () {
                 "Cidade": $(this).find("#Cidade").val(),
                 "Logradouro": $(this).find("#Logradouro").val(),
                 "Telefone": $(this).find("#Telefone").val(),
-                "CPF": $(this).find("#CPF").val()
+                "CPF": $(this).find("#CPF").val(),
+                "Beneficiarios": items.beneficiarios
             },
             error:
                 function (r) {
@@ -31,6 +67,7 @@ $(document).ready(function () {
                 }
         });
     });
+
 
 });
 

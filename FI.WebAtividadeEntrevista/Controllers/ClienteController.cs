@@ -101,7 +101,8 @@ namespace WebAtividadeEntrevista.Controllers
                     Nome = model.Nome,
                     Sobrenome = model.Sobrenome,
                     Telefone = model.Telefone,
-                    CPF = model.CPF
+                    CPF = model.CPF,
+                    Beneficiarios = model.Beneficiarios
                 });
                                
                 return Json("Cadastro alterado com sucesso");
@@ -114,6 +115,16 @@ namespace WebAtividadeEntrevista.Controllers
             BoCliente bo = new BoCliente();
             Cliente cliente = bo.Consultar(id);
             Models.ClienteModel model = null;
+            BoBeneficiario beneficiarioBO = new BoBeneficiario();
+            var beneficiarios = new List<Beneficiario>();
+            if (cliente != null)
+            {
+                beneficiarios = beneficiarioBO.Listar().Where(b => b.IdCliente == id).ToList();
+                if (beneficiarios != null)
+                {
+                    cliente.Beneficiarios = beneficiarios;
+                }
+            }
 
             if (cliente != null)
             {
@@ -129,10 +140,19 @@ namespace WebAtividadeEntrevista.Controllers
                     Nome = cliente.Nome,
                     Sobrenome = cliente.Sobrenome,
                     Telefone = cliente.Telefone,
-                    CPF = cliente.CPF
+                    CPF = cliente.CPF,
+                    Beneficiarios = cliente.Beneficiarios
+                    
                 };
 
-            
+                //var beneficiarios = new List<Beneficiario>()
+                //{
+                //    new Beneficiario{Id=1, CPF="12345678925", Nome="Jose Toress", IdCliente=1 },
+                //    new Beneficiario{Id=2, CPF="78945612336", Nome="Maria da Silva", IdCliente=1 },
+                //    new Beneficiario{Id=3, CPF="15914736987", Nome="Andreia Salves", IdCliente=1 },
+                //};
+
+                //model.Beneficiarios = beneficiarios;
             }
 
             return View(model);

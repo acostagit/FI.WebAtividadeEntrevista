@@ -1,0 +1,69 @@
+﻿
+<div class="container">
+    <div class="modal fade" id="modal-beneficiario" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:700px">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title">Beneficiários</h4>
+                </div>
+                <div class="modal-body">
+                    @*<div class="row">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="cpf">CPF:</label>
+                                    <input required="required" type="text" class="form-control" id="cpf-beneficiario" name="cpf-beneficiario" placeholder="Ex.: 010.011.111-00" maxlength="14">
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="Nome">Nome:</label>
+                                    <input required="required" type="text" class="form-control" id="nome-beneficiario" name="nome-beneficiario" placeholder="Ex.: Maria" maxlength="100">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="button" id="btn-incluir" name="btn-incluir" class="btn btn-sm btn-primary" style="margin-top: 41%">Incluir888</button>
+                            </div>
+                        </div>*@
+
+                    <div class="row">
+                        <div id=" tabela-beneficiario">
+                            <table id="tb-beneficiarios" class="table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="col-lg-5">
+                                                <div class="form-group">
+                                                    <label for="cpf">CPF:</label>
+                                                    <input required="required" type="text" style="width:200px" class="form-control" id="cpf-beneficiario" name="cpf-beneficiario" placeholder="Ex.: 010.011.111-00" maxlength="14">
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="col-lg-5">
+                                                <div class="form-group">
+                                                    <label for="Nome">Nome:</label>
+                                                    <input required="required" type="text" class="form-control" style="width:300px" id="nome-beneficiario" name="nome-beneficiario" placeholder="Ex.: Maria" maxlength="100">
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="col-lg-2">
+                                                <button type="button" id="btn-incluir" name="btn-incluir" class="btn btn-sm btn-primary" style="margin-top:30%">Incluir</button>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div><!-- /.modal-dialog -->
+            </div>
+        </div>
+    </div>
+</div>

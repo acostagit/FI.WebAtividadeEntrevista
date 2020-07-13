@@ -1,97 +1,249 @@
 ﻿
-<form id="formCadastro" method="post">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="Nome">Nome:</label>
-                <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="Sobrenome">Sobrenome:</label>
-                <input required="required" type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="cpf">CPF:</label>
-                <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 010.011.111-00" maxlength="12">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="Nacionalidade">Nacionalidade:</label>
-                <input required="required" type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
-            </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="CEP">CEP:</label>
-                <input required="required" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="Estado">Estado:</label>
-                <select required="required" id="Estado" class="form-control" name="Estado">
-                    <option value="">Selecione</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="PE">Pernambuco</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="Cidade">Cidade:</label>
-                <input required="required" type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label for="Logradouro">Logradouro:</label>
-                <input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="Email">E-mail:</label>
-                <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="Telefone">Telefone:</label>
-                <input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="pull-left">
-                <button type="button" id="btn-beneficiarios" name="-btn-beneficiarios" class="btn btn-sm btn-primary">Beneficiários</button>
-                @*@Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })*@
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="pull-right">
-                <button type="submit" class="btn btn-sm btn-success">Salvar</button>
-                @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
-            </div>
-        </div>
-    </div>
+<form id="formCadastro" style="width:100%" method="post">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cliente</a>
 
 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Nome">Nome:</label>
+                        <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Sobrenome">Sobrenome:</label>
+                        <input required="required" type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cpf">CPF:</label>
+                        <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 010.011.111-00" maxlength="12">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Nacionalidade">Nacionalidade:</label>
+                        <input required="required" type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="CEP">CEP:</label>
+                        <input required="required" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Estado">Estado:</label>
+                        <select required="required" id="Estado" class="form-control" name="Estado">
+                            <option value="">Selecione</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="PE">Pernambuco</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Cidade">Cidade:</label>
+                        <input required="required" type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Logradouro">Logradouro:</label>
+                        <input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Email">E-mail:</label>
+                        <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Telefone">Telefone:</label>
+                        <input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="pull-left">
+                        @*<a href="@Url.Action("Index", "Beneficiario")" title="Beneficiario" name="chepa" id="chepa" class="btn btn-info">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    Beneficiarios
+                            </a>*@
+
+                        @*@Html.ActionLink("Beneficiario", "Index", "Beneficiario", new { }, new { @class = "btn btn-sm btn-primary", style = "margin-top: 60%" })*@
+
+                        @*<button class="btn btn-success details"><i class="glyphicon glyphicon-file"></i></button>*@
+                        @*<button type="button" id="btn-addBenef" name="btn-add-benef" class="btn btn-sm btn-primary">Beneficiário</button>*@
+
+                        @*@Html.ActionLink("Edit", "Index", "Beneficiario", new { @class = "btn edit" })*@
+
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-beneficiario">Beneficiários</button>
+
+                        @*<button type="button" id="btn-addBenef" name="btn-add-benef" class="btn btn-info btn-sm" data-target="#modal-beneficiario">Beneficiários</button>*@
+                        @*@Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })*@
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
+                    </div>
+                </div>
+            </div>
+
+            @*<div id="modal" class="myModal fade" />*@
+            @*<div class="modal fade" id="myModal" role="dialog" data-url='@Url.Action("PartialBeneficiario", "beneficiario")'> </div>*@
+
+            <div class="container">
+                <div class="modal fade" id="modal-beneficiario" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width:700px">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">x</button>
+                                <h4 class="modal-title">Beneficiários</h4>
+                            </div>
+                            <div class="modal-body">
+                                @*<div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="form-group">
+                                                <label for="cpf">CPF:</label>
+                                                <input required="required" type="text" class="form-control" id="cpf-beneficiario" name="cpf-beneficiario" placeholder="Ex.: 010.011.111-00" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <div class="form-group">
+                                                <label for="Nome">Nome:</label>
+                                                <input required="required" type="text" class="form-control" id="nome-beneficiario" name="nome-beneficiario" placeholder="Ex.: Maria" maxlength="100">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <button type="button" id="btn-incluir" name="btn-incluir" class="btn btn-sm btn-primary" style="margin-top: 41%">Incluir888</button>
+                                        </div>
+                                    </div>*@
+                                <div id="resultado"></div>
+
+                                <div class="row">
+                                    <div id=" tabela-beneficiario">
+                                        <table id="tb-beneficiarios" class="table" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <label for="cpf">CPF:</label>
+                                                                @*<input type="text" style="width:200px" class="form-control" id="cpf-beneficiario" name="cpf-beneficiario" placeholder="Ex.: 010.011.111-00" maxlength="14">*@
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="col-lg-5">
+                                                            <div class="form-group">
+                                                                <label for="Nome">Nome:</label>
+                                                                @*<input type="text" class="form-control" style="width:300px" id="nome-beneficiario" name="nome-beneficiario" placeholder="Ex.: Maria" maxlength="100">*@
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                @* <button type="button" id="btn-incluir" name="btn-incluir" class="btn btn-sm btn-primary" style="margin-top:0%">Incluir</button>*@
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="modal" id="modal-cadastro-beneficiario"></div>*@
+
+            @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Abrir janela Modal</button>*@
+
+
+
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="beneficiario-tab" data-toggle="tab" href="#beneficiario" role="tab" aria-controls="beneficiario" aria-selected="false">Beneficiários</a>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Beneficiario">Beneficiários</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="cpf">CPF:</label>
+                        <input  type="text" class="form-control" id="cpf-beneficiario" name="cpf-beneficiario" placeholder="Ex.: 010.011.111-00" maxlength="12">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="Nome">Nome:</label>
+                        <input  type="text" class="form-control" id="nome-beneficiario" name="nome-beneficiario" placeholder="Ex.: João" maxlength="50">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+
+                    <button type="button" id="btn-incluir" name="-btn-incluir" class="btn btn-sm btn-primary" style="margin-top: 17%">Incluir</button>
+
+                </div>
+
+                @*<div class="col-md-2">
+                        <div class="form-group">
+                            <button type="button" id="btn-incluir" name="-btn-incluir" class="btn btn-sm btn-primary">Incluir</button>
+                        </div>
+                    </div>*@
+            </div>
+
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+        <div class="tab-pane fade hide" id="beneficiario" role="tabpanel" aria-labelledby="beneficiario-tab">...</div>
+    </div>
 </form>
+
+
+
+
+
+
+
+
