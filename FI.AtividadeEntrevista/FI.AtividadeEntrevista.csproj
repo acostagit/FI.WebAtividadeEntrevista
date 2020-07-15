@@ -95,8 +95,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DAL\Beneficiario\Procedures\FI_SP_AltBeneficiario.sql" />
     <Content Include="DAL\Beneficiario\Procedures\FI_SP_Cons_Beneficiario.sql" />
+    <Content Include="DAL\Beneficiario\Procedures\FI_SP_DelBeneficiario.sql" />
+    <Content Include="DAL\Beneficiario\Procedures\FI_SP_IncBeneficiario.sql" />
     <Content Include="DAL\Beneficiario\Procedures\FI_SP_Inc_BeneficiarioV2.sql" />
+    <Content Include="DAL\Beneficiario\Procedures\FI_SP_PesquisaBeneficiario.sql" />
+    <Content Include="DAL\Beneficiario\Procedures\FI_SP_PesquisaBeneficiarioPorCPF.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

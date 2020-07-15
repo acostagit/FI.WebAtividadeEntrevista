@@ -36,5 +36,12 @@ namespace FI.AtividadeEntrevista.BLL
             DAL.DaoBeneficiario beneficiario = new DAL.DaoBeneficiario();
             return beneficiario.Listar();
         }
+
+        public bool VerificarCPF(string cpf)
+        {
+            DAL.DaoBeneficiario beneficiario = new DAL.DaoBeneficiario();
+            return beneficiario.VerificarCPF(cpf);
+        }
+
     }
 }

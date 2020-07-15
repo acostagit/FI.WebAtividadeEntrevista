@@ -59,13 +59,13 @@ namespace FI.AtividadeEntrevista.DAL
             return ret;
         }
 
-        public bool VerificarExistenciaCPF(string CPF)
+        public bool VerificarCPF(string CPF)
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
 
             parametros.Add(new System.Data.SqlClient.SqlParameter("CPF", CPF));
 
-            DataSet ds = base.Consultar("FI_SP_Verifica_CPF_Beneficiario", parametros);
+            DataSet ds = base.Consultar("FI_SP_PesquisaBeneficiarioPorCPF", parametros);
 
             return ds.Tables[0].Rows.Count > 0;
         }
